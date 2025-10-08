@@ -1,0 +1,92 @@
+
+// uma constante em JS/TS é definida da seguinte maneira:
+// usamos a palavra const, depois o nome da constante e,
+// imediatamente atribuimos o valor.
+const pi = 3.1415;
+
+
+const n = "Leonardo Silva";
+// constante é imutável. portanto nao pode ser reatribuída
+// n = "Leonardo Dionel Lima Silva";
+
+// INFERÊNCIA DE TIPOS
+const universidade = "PUC-Campinas";
+// por inferência o TS percebe que, na primeira atribuição (no caso da constante é a unica)
+// o tipo é uma string. portanto o typescript determina que uma constante uma vez atribuida
+// com string nao muda (mas serve tambem para let e var)
+
+// por inferência o TS define que a variavel idade é do tipo number.
+// se você imediatamente inicializar:
+let idade = 43;
+// se eu tentar fazer a reatribuição nao funcionara
+// idade = "queijo";
+console.log(idade);
+
+// definindo tipos explicitamente
+let s: String;
+s = "boa tarde!"
+
+
+// boolean
+let sol: Boolean = true;
+// ou
+// let sol;
+// sol = true;
+
+// Multi-tipos
+let notaEstudante: String | Number = "A";
+notaEstudante = 10.0;
+
+// Any = qualquer coisa;
+let xpto: any = "Teste";
+xpto = true;
+xpto = 10;
+
+// criando um tipo nosso. podemos usar a palavra type ou interface.
+interface Pessoa{
+    nome: string;
+    idade: number;
+}
+// o tipo pessoa, é como se fosse(ingenuamente) uma struct que tem partes.
+// cada parte a gente chama de propriedade de uma pessoa. (nesse caso)
+// propriedade é uma caracteristica
+
+interface Endereco{
+    logradouro: string;
+    numero?: number;
+    // o simbolo ? torna essa propriedade opcional (nao precisa atribuir valor)
+    complemento?: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
+    cep: string;
+}
+
+let e: Endereco = {
+    logradouro: "AV. Brasil",
+    numero: 100,
+    complemento: "",
+    bairro: "Centro",
+    cidade: "Campinas",
+    estado: "SP",
+    cep: "12334-123",
+}
+
+interface Pessoa {
+    nome: string;
+    idade: number;
+    endereco: Endereco;
+}
+
+let joao: Pessoa = {
+    nome: "João Pedro",
+    idade: 20,
+    endereco: e
+}
+
+console.log(joao)
+
+// para praticar:
+// Criar o tipo Professor, tipo Disciplina, tipo Aluno
+// voce pode colocar notas dentro de um atributo
+// notas do aluno
